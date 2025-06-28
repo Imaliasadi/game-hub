@@ -13,16 +13,16 @@ function GamesGrid() {
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={10}>
         {isLoading &&
           skeletons.map((skeleton) => (
-            <GameCardContainer>
+            <GameCardContainer key={skeleton}>
               {" "}
-              <GameCardSkeleton key={skeleton} />
+              <GameCardSkeleton />
             </GameCardContainer>
           ))}
       </SimpleGrid>
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={10}>
+      <SimpleGrid columns={{ sm: 1, lg: 2, xl: 3 }} gap={10}>
         {data.map((game) => (
-          <GameCardContainer>
-            <GameCard key={game.id} game={game} />{" "}
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />{" "}
           </GameCardContainer>
         ))}
       </SimpleGrid>

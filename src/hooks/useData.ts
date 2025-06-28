@@ -8,7 +8,7 @@ interface FetchRes<T> {
 }
 
 const useData = <T>(endpoint: string) => {
-  const [data, setGames] = useState<T[]>([]);
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -18,7 +18,7 @@ const useData = <T>(endpoint: string) => {
     apiClient
       .get<FetchRes<T>>(endpoint, { signal: controler.signal })
       .then((res) => {
-        setGames(res.data.results);
+        setData(res.data.results);
         setLoading(false);
       })
       .catch((err) => {

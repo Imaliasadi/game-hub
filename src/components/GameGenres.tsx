@@ -1,13 +1,31 @@
-import useGenres from "@/hooks/useGenres";
+import useGenres, { type Genres } from "@/hooks/useGenres";
+import OptimiseImageSize from "@/services/image-url";
+import { Button, HStack, Image, List, Spinner } from "@chakra-ui/react";
 
-function GameGenres() {
-  const { data } = useGenres();
+interface Props {
+  onSlected: (genre: Genres) => void;
+}
+
+function GameGenres({ onSlected }: Props) {
+  const { data, isLoading } = useGenres();
   return (
-    <ul>
+    <List.Root>
+      {isLoading && <Spinner />}
       {data.map((genre) => (
-        <li key={genre.id}>{genre.name}</li>
+        <List.Item key={genre.id} padding={"5px"} listStyle={"none"}>
+          <HStack>
+            <Image
+              boxSize={"34px"}
+              borderRadius={8}
+              src={OptimiseImageSize(genre.image_background)}
+            />{" "}
+            <Button onClick={() => onSlected(genre)} variant="outline" fontSize={"lg"}>
+              {genre.name}
+            </Button>
+          </HStack>
+        </List.Item>
       ))}
-    </ul>
+    </List.Root>
   );
 }
 
