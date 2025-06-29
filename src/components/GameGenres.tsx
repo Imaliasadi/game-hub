@@ -3,10 +3,10 @@ import OptimiseImageSize from "@/services/image-url";
 import { Button, HStack, Image, List, Spinner } from "@chakra-ui/react";
 
 interface Props {
-  onSlected: (genre: Genres) => void;
+  onSelectedGenre: (genre: Genres) => void;
 }
 
-function GameGenres({ onSlected }: Props) {
+function GameGenres({ onSelectedGenre }: Props) {
   const { data, isLoading } = useGenres();
   return (
     <List.Root>
@@ -19,7 +19,11 @@ function GameGenres({ onSlected }: Props) {
               borderRadius={8}
               src={OptimiseImageSize(genre.image_background)}
             />{" "}
-            <Button onClick={() => onSlected(genre)} variant="outline" fontSize={"lg"}>
+            <Button
+              onClick={() => onSelectedGenre(genre)}
+              variant="outline"
+              fontSize={"lg"}
+            >
               {genre.name}
             </Button>
           </HStack>
