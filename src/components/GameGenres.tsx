@@ -15,7 +15,7 @@ function GameGenres({ onSelectedGenre }: Props) {
         <List.Item key={genre.id} padding={"5px"} listStyle={"none"}>
           <HStack>
             <Image
-              boxSize={"34px"}
+              boxSize={"40px"}
               borderRadius={8}
               src={OptimiseImageSize(genre.image_background)}
             />{" "}
