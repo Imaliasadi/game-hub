@@ -33,7 +33,7 @@ const useData = <T>(
         });
       return () => controler.abort();
     },
-    deps ? [...deps] : []
+    deps ? [...deps, endpoint] : [endpoint]
   );
 
   return { data, error, isLoading };
