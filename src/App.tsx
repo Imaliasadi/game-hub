@@ -20,6 +20,7 @@ function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   return (
     <Grid
+      padding={3}
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
