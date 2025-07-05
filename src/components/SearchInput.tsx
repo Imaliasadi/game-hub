@@ -25,7 +25,7 @@ function SearchInput({ onSearch }: Search) {
         <Input
           ref={inputRef}
           borderRadius={20}
-          placeholder="Search somthing then press Enter"
+          placeholder="Type somthing then press Enter to Search"
         />
       </InputGroup>
     </form>
