@@ -1,1 +1,1 @@
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+// No imports needed at this time
