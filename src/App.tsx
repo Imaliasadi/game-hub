@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GamesGrid from "./components/GamesGrid";
@@ -19,37 +20,40 @@ export interface GameQuery {
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   return (
-    <Grid
-      padding={3}
-      templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
-      }}
-    >
-      <GridItem area="nav">
-        <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
-      </GridItem>
-      <GridItem area="aside" display={{ base: "none", lg: "block" }} paddingX={"5"}>
-        <GameGenres
-          onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-          selectedGenres={gameQuery.genre}
-        />
-      </GridItem>
-      <GridItem area="main">
-        <DynamicHeading gameQuery={gameQuery} />
-        <Box spaceX={3} marginBottom={7}>
-          <PlatformSlector
-            selectedPlatform={gameQuery.platform}
-            onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+    <>
+      <Grid
+        padding={3}
+        templateAreas={{
+          base: `"nav" "main"`,
+          lg: `"nav nav" "aside main"`,
+        }}
+      >
+        <GridItem area="nav">
+          <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
+        </GridItem>
+        <GridItem area="aside" display={{ base: "none", lg: "block" }} paddingX={"5"}>
+          <GameGenres
+            onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenres={gameQuery.genre}
           />
-          <SortSelector
-            sortOrder={gameQuery.sort}
-            onSelectedSort={(sort) => setGameQuery({ ...gameQuery, sort })}
-          />
-        </Box>
-        <GamesGrid gameQuery={gameQuery} />
-      </GridItem>
-    </Grid>
+        </GridItem>
+        <GridItem area="main">
+          <DynamicHeading gameQuery={gameQuery} />
+          <Box spaceX={3} marginBottom={7}>
+            <PlatformSlector
+              selectedPlatform={gameQuery.platform}
+              onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+            />
+            <SortSelector
+              sortOrder={gameQuery.sort}
+              onSelectedSort={(sort) => setGameQuery({ ...gameQuery, sort })}
+            />
+          </Box>
+          <GamesGrid gameQuery={gameQuery} />
+        </GridItem>
+      </Grid>
+      <Analytics />
+    </>
   );
 }
 
