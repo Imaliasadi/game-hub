@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GamesGrid from "./components/GamesGrid";
