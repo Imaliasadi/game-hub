@@ -21,7 +21,12 @@ function SortSelector({ onSelectedSort, sortOrder }: Props) {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button
+          variant="outline"
+          size="sm"
+          marginBottom={3}
+          marginX={{ base: " ", lg: "3" }}
+        >
           Sort by: {currentOrder?.lable || "Relevance"}
           <BsChevronDown style={{ marginLeft: "3px" }} />
         </Button>

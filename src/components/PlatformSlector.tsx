@@ -15,7 +15,7 @@ function PlatformSlector({ onSelectedPlatform, selectedPlatform }: Props) {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" marginBottom={3}>
           {selectedPlatform ? selectedPlatform.name : "Show games by platform :"}
           <BsChevronDown style={{ marginLeft: "3px" }} />
         </Button>

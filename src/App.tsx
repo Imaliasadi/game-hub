@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GamesGrid from "./components/GamesGrid";
 import GameGenres from "./components/GameGenres";
@@ -39,16 +39,14 @@ function App() {
         </GridItem>
         <GridItem area="main">
           <DynamicHeading gameQuery={gameQuery} />
-          <Box spaceX={3} marginBottom={7}>
-            <PlatformSlector
-              selectedPlatform={gameQuery.platform}
-              onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
-            />
-            <SortSelector
-              sortOrder={gameQuery.sort}
-              onSelectedSort={(sort) => setGameQuery({ ...gameQuery, sort })}
-            />
-          </Box>
+          <PlatformSlector
+            selectedPlatform={gameQuery.platform}
+            onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+          />
+          <SortSelector
+            sortOrder={gameQuery.sort}
+            onSelectedSort={(sort) => setGameQuery({ ...gameQuery, sort })}
+          />
           <GamesGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>

@@ -4,7 +4,7 @@ Game Hub is a minimal redesign and clone of the [RAWG.io] website built using it
 
 ## 🔗 Demo Link
 
-[View Online](https://game-hub-hazel-six.vercel.app/)
+[View Online](https://game-hub-hazel-six.vercel.app)
 
 ## ⚙️ Technologies Used
 
