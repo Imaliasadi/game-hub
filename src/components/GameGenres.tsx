@@ -14,7 +14,7 @@ function GameGenres({ onSelectedGenre, selectedGenres }: Props) {
       <Heading marginBottom={3}>Genres</Heading>
       <List.Root>
         {isLoading && <Spinner />}
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <List.Item
             key={genre.id}
             padding={"5px"}
