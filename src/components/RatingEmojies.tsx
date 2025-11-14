@@ -7,7 +7,8 @@ interface Props {
   rating: number;
 }
 function RatingEmojies({ rating }: Props) {
-  if (rating < 3) return;
+  if (rating < 3) return <></>;
+
   const emojiMap: { [key: number]: ImageProps } = {
     3: { src: meh, alt: "meh", boxSize: "25px" },
     4: { src: thumbsUp, alt: "Recomnded", boxSize: "25px" },
