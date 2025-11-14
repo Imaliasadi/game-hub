@@ -4,10 +4,10 @@ import { Button, Heading, HStack, Image, List, Spinner } from "@chakra-ui/react"
 
 interface Props {
   onSelectedGenre: (genre: Genres) => void;
-  selectedGenres: Genres | null;
+  selectedGenreId?: number;
 }
 
-function GameGenres({ onSelectedGenre, selectedGenres }: Props) {
+function GameGenres({ onSelectedGenre, selectedGenreId }: Props) {
   const { data, isLoading } = useGenres();
   return (
     <>
@@ -31,7 +31,7 @@ function GameGenres({ onSelectedGenre, selectedGenres }: Props) {
               <Button
                 onClick={() => onSelectedGenre(genre)}
                 variant="plain"
-                fontWeight={genre === selectedGenres ? "bold" : ""}
+                fontWeight={genre.id === selectedGenreId ? "bold" : ""}
                 fontSize="lg"
               >
                 {genre.name}

@@ -5,18 +5,19 @@ import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
   onSelectedPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
-function PlatformSlector({ onSelectedPlatform, selectedPlatform }: Props) {
+function PlatformSlector({ onSelectedPlatform, selectedPlatformId }: Props) {
   const { data, error } = usePlatforms();
+  const selectedPlatform = data?.results.find((p) => p.id === selectedPlatformId);
 
   if (error) return null;
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button variant="outline" size="sm" marginBottom={3}>
-          {selectedPlatform ? selectedPlatform.name : "Show games by platform :"}
+          {selectedPlatform?.name || "Show games by platform :"}
           <BsChevronDown style={{ marginLeft: "3px" }} />
         </Button>
       </Menu.Trigger>
