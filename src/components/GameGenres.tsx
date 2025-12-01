@@ -1,14 +1,12 @@
-import useGenres, { type Genres } from "@/hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 import OptimiseImageSize from "@/services/image-url";
 import { Button, Heading, HStack, Image, List, Spinner } from "@chakra-ui/react";
+import useGameQueryStore from "./store";
 
-interface Props {
-  onSelectedGenre: (genre: Genres) => void;
-  selectedGenreId?: number;
-}
-
-function GameGenres({ onSelectedGenre, selectedGenreId }: Props) {
+function GameGenres() {
   const { data, isLoading } = useGenres();
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   return (
     <>
       <Heading marginBottom={3}>Genres</Heading>
@@ -29,7 +27,7 @@ function GameGenres({ onSelectedGenre, selectedGenreId }: Props) {
                 src={OptimiseImageSize(genre.image_background)}
               />{" "}
               <Button
-                onClick={() => onSelectedGenre(genre)}
+                onClick={() => setGenreId(genre.id)}
                 variant="plain"
                 fontWeight={genre.id === selectedGenreId ? "bold" : ""}
                 fontSize="lg"
