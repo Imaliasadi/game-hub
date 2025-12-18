@@ -11,8 +11,8 @@ function ErrorPage() {
         <Heading>Ooops</Heading>
         <Text>
           {isRouteErrorResponse(error)
-            ? "The page you trying to reach does not exist"
-            : "an unexpected erro occured"}
+            ? "The page you trying to reach does not exist."
+            : "an unexpected erro occured."}
         </Text>
       </Box>
     </div>
